@@ -28,12 +28,14 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'validate'
+              environmentServiceNameAzureRM: 'sanjayconnection'
       - job: 
         steps:
           - task: TerraformTask@5
             inputs:
               provider: 'azurerm'
               command: 'plan'
+              environmentServiceNameAzureRM: 'sanjayconnection'
       - job: 
         steps:
           - task: TerraformTask@5
