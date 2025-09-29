@@ -1,0 +1,48 @@
+trigger:
+- main
+
+pool: Agent
+  
+
+stages:
+  - stage: 
+    jobs:
+      - job: 
+        steps:
+          - task: TerraformInstaller@1
+            inputs:
+              terraformVersion: 'latest'
+      - job: 
+        steps:
+          - task: TerraformTask@5
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'sanjayconnection'
+              backendAzureRmStorageAccountName: 'telecomstg'
+              backendAzureRmContainerName: 'telecomcntr'
+              backendAzureRmKey: 'terraform.tfstate'
+      - job:
+        steps:
+          - task: TerraformTask@5
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
+      - job: 
+        steps:
+          - task: TerraformTask@5
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+      - job: 
+        steps:
+          - task: TerraformTask@5
+            inputs:
+              provider: 'azurerm'
+              command: 'apply'
+              environmentServiceNameAzureRM: 'sanjayconnection'
+        
+
+
+
+
