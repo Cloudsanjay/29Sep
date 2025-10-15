@@ -17,3 +17,13 @@ steps:
     backendAzureRmStorageAccountName: 'ranjeetstg1234'
     backendAzureRmContainerName: 'ranjeetcontainer'
     backendAzureRmKey: 'terraform.tfstate'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'S_service_connection'
+
