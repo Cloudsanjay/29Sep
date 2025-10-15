@@ -14,6 +14,6 @@ steps:
     provider: 'azurerm'
     command: 'init'
     backendServiceArm: 'S_service_connection'
-    backendAzureRmStorageAccountName: 'sanjaystg111341'
-    backendAzureRmContainerName: 'sanjaycntr1'
+    backendAzureRmStorageAccountName: 'ranjeetstg1234'
+    backendAzureRmContainerName: 'ranjeetcontainer'
     backendAzureRmKey: 'terraform.tfstate'
