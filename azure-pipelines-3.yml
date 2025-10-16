@@ -23,10 +23,6 @@ jobs:
         inputs:
           provider: 'azurerm'
           command: 'validate'
-  - job: terraformplan
-    displayName: terraform plan
-    pool: SAgent
-    steps:
       - task: TerraformTask@5
         inputs:
           provider: 'azurerm'
