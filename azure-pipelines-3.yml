@@ -32,6 +32,14 @@ jobs:
     - task: TerraformTask@5
       inputs:
         provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'S_service_connection'
+        backendAzureRmStorageAccountName: 'stgsonal11'
+        backendAzureRmContainerName: 'contsonal'
+        backendAzureRmKey: 'terraform.tfstate'
+    - task: TerraformTask@5
+      inputs:
+        provider: 'azurerm'
         command: 'plan'
         environmentServiceNameAzureRM: 'S_service_connection'
         
