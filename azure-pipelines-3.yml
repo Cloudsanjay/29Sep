@@ -1,0 +1,19 @@
+trigger: none
+
+
+pool: SAgent
+
+jobs:
+  - job: 
+    steps:
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: 'latest'
+      - task: TerraformTask@5
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          backendServiceArm: 'S_service_connection'
+          backendAzureRmStorageAccountName: 'stgsonal11'
+          backendAzureRmContainerName: 'contsonal'
+          backendAzureRmKey: 'terraform.tfstate'
