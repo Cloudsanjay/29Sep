@@ -25,6 +25,7 @@ jobs:
           command: 'validate'
   - job: terraformplan
     displayName: terraform plan
+    pool: SAgent
     steps:
       - task: TerraformTask@5
         inputs:
