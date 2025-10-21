@@ -22,3 +22,7 @@ stages:
               backendAzureRmStorageAccountName: 'ranjeetstg1234'
               backendAzureRmContainerName: 'ranjeetcontainer'
               backendAzureRmKey: 'sanjay.tfstate'
+          - task: TerraformTask@5
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
