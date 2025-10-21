@@ -32,9 +32,8 @@ stages:
         dependsOn: terraformInitValidate
         pool: server
         steps:
-          - task: ManualValidation@1
-            inputs:
-              notifyUsers: 'cloud.sanjaysingh@gmail.com'
-              approvers: 'Sanjay Singh'
+        - task: ManualValidation@1
+          inputs:
+            notifyUsers: 'cloud.sanjaysingh@gmail.com'
 
   
