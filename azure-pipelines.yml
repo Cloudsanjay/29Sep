@@ -9,6 +9,7 @@ stages:
     displayName: TerraformInitFmtValidate
     jobs:
       - job: terraformInitFMTValidate
+        displayName: InitFmtValidate chalana hai
         steps:
           - task: TerraformInstaller@1
             inputs:
