@@ -26,7 +26,6 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'validate'
-
       - job: ManualValidation
         displayName: Manual Validation karna h
         dependsOn: terraformInitValidate
@@ -35,5 +34,22 @@ stages:
         - task: ManualValidation@1
           inputs:
             notifyUsers: 'cloud.sanjaysingh@gmail.com'
+      - job: TerraformApply
+        displayName: Terraform Apply karna hai
+        dependsOn: ManualValidation
+        steps:
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'S_service_connection'
+            backendAzureRmStorageAccountName: 'ranjeetstg1234'
+            backendAzureRmContainerName: 'ranjeetcontainer'
+            backendAzureRmKey: 'sanjay.tfsate'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'apply'
+            environmentServiceNameAzureRM: 'S_service_connection'
 
   
