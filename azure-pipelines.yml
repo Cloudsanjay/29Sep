@@ -5,11 +5,11 @@ trigger:
 pool: SAgent
 
 stages:
-  - stage: TerraformInitFmtValidate
-    displayName: TerraformInitFmtValidate
+  - stage: Build
+    displayName: Build Karna hai
     jobs:
-      - job: terraformInitFMTValidate
-        displayName: InitFmtValidate chalana hai
+      - job: terraformInitValidate
+        displayName: Init & Validate chalana hai
         steps:
           - task: TerraformInstaller@1
             inputs:
@@ -26,3 +26,15 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'validate'
+
+      - job: ManualValidation
+        displayName: Manual Validation karna h
+        dependsOn: terraformInitValidate
+        pool: server
+        steps:
+          - task: ManualValidation@1
+            inputs:
+              notifyUsers: 'cloud.sanjaysingh@gmail.com'
+              approvers: 'Sanjay Singh'
+
+  
